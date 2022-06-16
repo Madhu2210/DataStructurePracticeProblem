@@ -1,19 +1,33 @@
-let sameBirthMonth = new Map()
-for (month = 1; month <= 12; month++) {
-    sameBirthMonth.set(month, 0)
-}
-
-let count = 0
-while (count <= 50) {
-    let birthMonth = (Math.floor(Math.random() * 100) % 12) + 1
-    let year = "199" + Math.floor(Math.random() * 10) % 10
-    if (year == "1992" || year == "1993") {
-        sameBirthMonth.set(birthMonth, sameBirthMonth.get(birthMonth) + 1)
-        count++
+let dice = new Map();
+let roll = true;
+let maxKey = 0;
+let minKey = 0;
+let count;
+let minValue = 10;
+while (roll) {
+    let diesValue = Math.floor(Math.random() * 6) + 1;
+    if (dice.has(diesValue)) {
+        //If it is Present in Map it increments
+        count = dice.get(diesValue);
+        dice.set(diesValue, count + 1);
+    } else {
+        //If it is not Present in Mapit adds
+        count = 1;
+        dice.set(diesValue, count);
+    }
+    if (dice.get(diesValue) == 10) {
+        roll = false;
+        maxKey = diesValue;
     }
 }
-console.log("Number of people having birthday in same month");
-console.log("month : count");
-for (key of sameBirthMonth.keys()) {
-    console.log(key + " : " + sameBirthMonth.get(key))
+
+for (let i = 1; i <= 6; i++) {
+    if (dice.get(i) < minValue) {
+        minValue = dice.get(i);
+        minKey = i;
+    }
 }
+
+console.log(dice);
+console.log("The number that reached maximum number of times is : " + maxKey);
+console.log("The number that reached minimum number of times is : " + minKey);
