@@ -2,7 +2,6 @@ let sameBirthMonth = new Map()
 for (month = 1; month <= 12; month++) {
     sameBirthMonth.set(month, 0)
 }
-
 let count = 0
 while (count <= 50) {
     let birthMonth = (Math.floor(Math.random() * 100) % 12) + 1

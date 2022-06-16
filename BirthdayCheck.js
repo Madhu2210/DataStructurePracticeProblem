@@ -8,7 +8,7 @@ while (count <= 50) {
     let birthMonth = (Math.floor(Math.random() * 100) % 12) + 1
     let year = "199" + Math.floor(Math.random() * 10) % 10
     if (year == "1992" || year == "1993") {
-        sameBirthMonth.set(birthMonth, sameBirthMonth.get(birthMonth) + 1)
+        sameBirthMonth.set(birthMonth, sagitmeBirthMonth.get(birthMonth) + 1)
         count++
     }
 }
